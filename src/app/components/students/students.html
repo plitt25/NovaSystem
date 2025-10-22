@@ -1,0 +1,17 @@
+<section class="estudiantes-page container py-5">
+  <h2 class="text-center mb-4">Nuestro Equipo de Desarrollo</h2>
+
+  <div class="row g-4">
+    <div class="col-12 col-md-4" *ngFor="let estudiante of estudiantes">
+      <div class="card h-100 shadow-sm border-0 text-center">
+        <img [src]="estudiante.imagen" class="card-img-top rounded-circle mx-auto mt-3"
+             alt="{{ estudiante.nombre }}" style="width: 120px; height: 120px; object-fit: cover;" />
+        <div class="card-body">
+          <h5 class="card-title">{{ estudiante.nombre }}</h5>
+          <p class="text-muted">{{ estudiante.carrera }}</p>
+          <p class="card-text small">{{ estudiante.descripcion }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,44 @@
+<section class="products-page container py-4">
+    <h2 class="text-center mb-4">Lista de Productos</h2>
+
+    <div class="row g-4">
+        @if (products$ | async; as products) {
+        @if (products.length > 0) {
+        @for (product of products; track product.id) {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <div class="card h-100 shadow-sm border-1">
+                <img [src]="getProductoImage(product.name)" class="card-img-top"
+                    alt="{{ product.name }}" />
+
+
+
+                <div class="card-body text-center">
+                    <h5 class="card-title text-capitalize">{{ product.name }}</h5>
+                    <p class="card-text mb-1 text-muted">
+                        Precio: <strong>{{ product.price | currency : 'COP' }}</strong>
+                    </p>
+
+                    @if (product.promo) {
+                    <span class="badge bg-success">
+                        Promo {{ product.porcentPromo }}%
+                    </span>
+                    }
+
+                    <p class="small text-secondary mt-2">
+                        {{ product.createdAt | date : 'mediumDate' }}
+                    </p>
+                </div>
+            </div>
+        </div>
+        }
+        } @else {
+        <p class="text-center text-muted">No hay productos disponibles.</p>
+        }
+        } @else {
+        <div class="text-center py-5">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-3 text-muted">Cargando productos...</p>
+        </div>
+        }
+    </div>
+</section>
